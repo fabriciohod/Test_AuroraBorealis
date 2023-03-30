@@ -1,8 +1,6 @@
-
-
 # Player
 
-- [ ] Movimentação no estilo top-down
+- [x] Movimentação no estilo top-down
 
 - [ ] Skill de dash
 
@@ -10,7 +8,7 @@
 
 - [ ] Escolher uma habilidade de dano
 
-- [ ] UI pro colldown do dash
+- [x] UI pro colldown do dash
 
 - [ ] VFX Pro dash
 
@@ -18,8 +16,8 @@
 
 # Cenário
 
-- [ ] Montar o cenário
+- [x] Montar o cenário
 
-- [ ] Arrumar as layers
+- [x] Arrumar as layers
 
 - [ ] VFXs pro cenário  

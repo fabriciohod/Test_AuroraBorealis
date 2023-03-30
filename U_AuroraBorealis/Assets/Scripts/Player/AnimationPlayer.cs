@@ -14,6 +14,7 @@ namespace FabriciohodDev.Player
 
         private int isMoving = Animator.StringToHash("IsMoving");
         private int isDashing = Animator.StringToHash("IsDashing");
+        private int isAttacking = Animator.StringToHash("IsAttacking");
 
         void Update()
         {
@@ -25,6 +26,7 @@ namespace FabriciohodDev.Player
             anim.SetFloat(idleX, Movement.LeastInputDir.x);
             anim.SetFloat(idleY, Movement.LeastInputDir.y);
 
+            anim.SetBool(isAttacking, Combat.IsAttack);
             anim.SetBool(isDashing, Movement.isDashing);
 
             anim.SetFloat(moveX, Movement.InputDir.x);
