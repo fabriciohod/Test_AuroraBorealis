@@ -4,7 +4,7 @@
 
 - [ ] Skill de dash
 
-- [ ] Ataque, (um slash)
+- [x] Ataque, (um slash)
 
 - [ ] Escolher uma habilidade de dano
 
