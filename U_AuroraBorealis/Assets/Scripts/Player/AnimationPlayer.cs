@@ -13,21 +13,20 @@ namespace FabriciohodDev.Player
         private int idleY = Animator.StringToHash("IdleY");
 
         private int isMoving = Animator.StringToHash("IsMoving");
-        private int dashTrigger = Animator.StringToHash("Dash");
+        private int isDashing = Animator.StringToHash("IsDashing");
 
         void Update()
         {
-            anim.SetBool(isMoving, false);
+            if (Movement.InputDir == Vector2.zero)
+                anim.SetBool(isMoving, false);
+            else
+                anim.SetBool(isMoving, true);
+
             anim.SetFloat(idleX, Movement.LeastInputDir.x);
             anim.SetFloat(idleY, Movement.LeastInputDir.y);
 
-            if (Movement.InputDir == Vector2.zero)
-                return;
+            anim.SetBool(isDashing, Movement.isDashing);
 
-            if(Movement.isDashing)
-                anim.SetTrigger(dashTrigger);
-
-            anim.SetBool(isMoving, true);
             anim.SetFloat(moveX, Movement.InputDir.x);
             anim.SetFloat(moveY, Movement.InputDir.y);
         }

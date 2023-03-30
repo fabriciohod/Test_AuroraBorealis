@@ -7,6 +7,7 @@ namespace FabriciohodDev.Player
     public class Movement : MonoBehaviour
     {
         [SerializeField] private float speed;
+        [SerializeField] private float dashForce;
         [SerializeField] private Timer dashColldownTimer;
 
 
@@ -26,9 +27,6 @@ namespace FabriciohodDev.Player
             movementAction.action.canceled += OnStopMove;
 
             DashAction.action.performed += OnDashing;
-            DashAction.action.canceled += OnStopDash;
-
-            dashColldownTimer.OnTimerTick.AddListener((i) => Debug.Log(i));
         }
 
         private void OnDisable()
@@ -37,7 +35,6 @@ namespace FabriciohodDev.Player
             movementAction.action.canceled -= OnStopMove;
 
             DashAction.action.performed -= OnDashing;
-            DashAction.action.canceled -= OnStopDash;
         }
 
         private void FixedUpdate() => physics.velocity = InputDir * speed;
@@ -50,18 +47,15 @@ namespace FabriciohodDev.Player
 
         private void OnDashing(InputAction.CallbackContext ctx)
         {
-            dashColldownTimer.StartTimer(() => Debug.Log("end"));
-            if (InputDir == Vector2.zero)
+            if (isDashing || InputDir == Vector2.zero)
                 return;
 
-            physics.AddForce(transform.position.normalized * 100f);
 
             isDashing = true;
-        }
-
-        private void OnStopDash(InputAction.CallbackContext ctx)
-        {
-            isDashing = false;
+            dashColldownTimer.StartTimer(() =>
+            {
+                isDashing = false;
+            });
         }
     }
 }

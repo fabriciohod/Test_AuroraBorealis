@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1324033671044615100}
   - component: {fileID: 3266487208994224390}
   - component: {fileID: 4868958881908402008}
-  m_Layer: 0
+  - component: {fileID: 6800463369976485738}
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1324033671044615100
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,9 +142,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  dashForce: 5
+  dashColldownTimer:
+    durationInSecs: 0.5
+    OnTimerTick:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_MethodName: set_fillAmount
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   physics: {fileID: 4471313454969789597}
   movementAction: {fileID: 3580467307320327242, guid: 0070481f5c7215440baf41c8335fd040, type: 3}
   DashAction: {fileID: -2643516916080530415, guid: 0070481f5c7215440baf41c8335fd040, type: 3}
+--- !u!210 &6800463369976485738
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4767983011761408094}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &8543186918207302622
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +187,7 @@ GameObject:
   - component: {fileID: 7069651122954847271}
   - component: {fileID: 8426999460889952316}
   - component: {fileID: 5271432371506163929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

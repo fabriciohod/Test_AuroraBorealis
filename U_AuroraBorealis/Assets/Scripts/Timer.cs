@@ -9,7 +9,7 @@ namespace FabriciohodDev
     public class Timer
     {
         [SerializeField] public float durationInSecs;
-        public UnityEvent<float> OnTimerTick;
+        [Space] public UnityEvent<float> OnTimerTick;
 
         public void StartTimer(Action callBackOnEnd = default)
         {
