@@ -10,7 +10,7 @@ namespace FabriciohodDev
     {
         [SerializeField] public float durationInSecs;
         [Space] public UnityEvent<float> OnTimerTick;
-
+        [Space] public UnityEvent OnTimerEnded;
         public void StartTimer(Action callBackOnEnd = default)
         {
             C_StartTimer(callBackOnEnd, durationInSecs);
@@ -29,6 +29,7 @@ namespace FabriciohodDev
             }
 
             callback.Invoke();
+            OnTimerEnded?.Invoke();
         }
     }
 }

@@ -37,7 +37,13 @@ namespace FabriciohodDev.Player
             DashAction.action.performed -= OnDashing;
         }
 
-        private void FixedUpdate() => physics.velocity = InputDir * speed;
+        private void FixedUpdate()
+        {
+            if (isDashing)
+                return;
+
+            physics.velocity = InputDir * speed;
+        }
         private void OnMove(InputAction.CallbackContext ctx) => InputDir = ctx.ReadValue<Vector2>();
         private void OnStopMove(InputAction.CallbackContext ctx)
         {
@@ -50,8 +56,12 @@ namespace FabriciohodDev.Player
             if (isDashing || InputDir == Vector2.zero)
                 return;
 
-
             isDashing = true;
+
+            physics.velocity = Vector2.zero;
+            physics.AddForce(InputDir * dashForce, ForceMode2D.Impulse);
+
+
             dashColldownTimer.StartTimer(() =>
             {
                 isDashing = false;
