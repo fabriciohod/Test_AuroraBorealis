@@ -7,8 +7,8 @@ namespace FabriciohodDev
     {
         private Health health;
         private SpriteRenderer spriteRenderer;
-        private bool isAnimating;
         private WaitForSeconds waitForSeconds;
+        private bool isAnimating;
         private int hitProp = Shader.PropertyToID("_Hit");
 
         private void Awake()
@@ -23,11 +23,10 @@ namespace FabriciohodDev
             if (!collision.CompareTag("SwordArea"))
                 return;
 
-            health.ReceviDamage(1);
+            health.ReceiveDamage(1);
             isAnimating = true;
             StartCoroutine(nameof(C_DamageTick));
         }
-
 
         IEnumerator C_DamageTick()
         {

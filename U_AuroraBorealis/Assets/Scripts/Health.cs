@@ -10,14 +10,13 @@ namespace FabriciohodDev
         [SerializeField] Timer despawnTimer;
         
         [Space]
-        public UnityEvent OnDamageRecevi;
+        public UnityEvent OnDamageReceive;
         public UnityEvent OnDeath;
 
-        public bool ReceviDamage(int damage)
+        public bool ReceiveDamage(int damage)
         {
             hitPoints -= damage;
-            OnDamageRecevi?.Invoke();
-            Debug.Log("hit");
+            OnDamageReceive?.Invoke();
 
             if(hitPoints <= 0) 
             {

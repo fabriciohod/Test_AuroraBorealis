@@ -26,7 +26,7 @@ namespace FabriciohodDev.Player
             anim.SetFloat(idleX, Movement.LeastInputDir.x);
             anim.SetFloat(idleY, Movement.LeastInputDir.y);
 
-            anim.SetBool(isAttacking, Combat.IsUsigAttack1);
+            anim.SetBool(isAttacking, Combat.IsUsingSlash);
             anim.SetBool(isDashing, Movement.isDashing);
 
             anim.SetFloat(moveX, Movement.InputDir.x);
