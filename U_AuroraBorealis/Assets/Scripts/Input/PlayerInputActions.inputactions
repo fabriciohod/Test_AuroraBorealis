@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Gameplay",
@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Attack 1",
                     "type": "Button",
                     "id": "671a2a3f-bd71-451d-be9a-d4b367b20c62",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack 2",
+                    "type": "Button",
+                    "id": "a81f6786-41cc-4ddd-b36d-c108ebccc747",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -173,7 +182,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Attack",
+                    "action": "Attack 1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -184,7 +193,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Attack",
+                    "action": "Attack 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9386884-e44d-4e50-bf8c-04bc12edbbba",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Attack 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "592b126e-cd61-4153-8b1e-7c1a4602848b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Attack 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

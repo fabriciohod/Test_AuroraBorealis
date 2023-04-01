@@ -1,41 +1,61 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 namespace FabriciohodDev
 {
     public class Combat : MonoBehaviour
     {
-        [SerializeField] private InputActionReference attackAction;
+        [SerializeField] private InputActionReference attack1Action;
+        [SerializeField] private InputActionReference attack2Action;
+        [SerializeField] private PlayableDirector aoeAttackPrefab;
         [SerializeField] private Timer slashColldown;
-        public static bool IsAttack { get; private set; }
-        private bool canAttack = true;
+        [SerializeField] private Timer aoeAttackColldown;
+        public static bool IsUsigAttack1 { get; private set; }
+        private bool canUseAttack1 = true;
+        private bool canUseAttack2 = true;
 
-        public void OnEnable()
+        void OnEnable()
         {
-            attackAction.action.performed += OnAttack;
-            attackAction.action.canceled += OnStopAttack;
+            attack1Action.action.performed += OnAttack1;
+            attack1Action.action.canceled += OnStopAttack1;
+
+            attack2Action.action.performed += OnAttack2;
         }
 
         public void OnDisable()
         {
-            attackAction.action.performed -= OnAttack;
-            attackAction.action.canceled -= OnStopAttack;
+            attack1Action.action.performed -= OnAttack1;
+            attack1Action.action.canceled -= OnStopAttack1;
+
+            attack2Action.action.performed -= OnAttack2;
         }
 
-        private void OnAttack(InputAction.CallbackContext ctx)
+        private void OnAttack1(InputAction.CallbackContext ctx)
         {
-            if (!canAttack)
+            if (!canUseAttack1)
                 return;
 
-            IsAttack = true;
-            canAttack = false;
+            IsUsigAttack1 = true;
+            canUseAttack1 = false;
 
-            slashColldown.StartTimer(() => canAttack = true);
+            slashColldown.StartTimer(() => canUseAttack1 = true);
         }
 
-        private void OnStopAttack(InputAction.CallbackContext ctx)
+        private void OnStopAttack1(InputAction.CallbackContext ctx)
         {
-            IsAttack = false;
+            IsUsigAttack1 = false;
+        }
+
+        private void OnAttack2(InputAction.CallbackContext ctx)
+        {
+            if (!canUseAttack2)
+                return;
+
+            canUseAttack2 = false;
+            aoeAttackPrefab.Play();
+
+            aoeAttackColldown.StartTimer(() => canUseAttack2 = true);
         }
     }
 }

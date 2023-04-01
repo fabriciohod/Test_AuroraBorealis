@@ -6,11 +6,13 @@
 
 - [x] Ataque, (um slash)
 
-- [ ] Escolher uma habilidade de dano
+- [x] Escolher uma habilidade de dano
+
+- [x] VFX da segunda habilidade
 
 - [x] UI pro colldown do dash
 
-- [ ] VFX Pro dash
+- [x] VFX Pro dash
 
 - [x] Dummy de treino
 
@@ -20,4 +22,4 @@
 
 - [x] Arrumar as layers
 
-- [ ] VFXs pro cenário  
+- [x] VFXs pro cenário  

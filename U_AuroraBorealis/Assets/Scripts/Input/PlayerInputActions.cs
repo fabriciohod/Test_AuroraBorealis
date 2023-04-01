@@ -46,9 +46,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Attack 1"",
                     ""type"": ""Button"",
                     ""id"": ""671a2a3f-bd71-451d-be9a-d4b367b20c62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""a81f6786-41cc-4ddd-b36d-c108ebccc747"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -195,7 +204,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""PC"",
-                    ""action"": ""Attack"",
+                    ""action"": ""Attack 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -206,7 +215,29 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Attack"",
+                    ""action"": ""Attack 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9386884-e44d-4e50-bf8c-04bc12edbbba"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Attack 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""592b126e-cd61-4153-8b1e-7c1a4602848b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Attack 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -247,7 +278,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
-        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_Attack1 = m_Gameplay.FindAction("Attack 1", throwIfNotFound: true);
+        m_Gameplay_Attack2 = m_Gameplay.FindAction("Attack 2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -311,14 +343,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Movement;
     private readonly InputAction m_Gameplay_Dash;
-    private readonly InputAction m_Gameplay_Attack;
+    private readonly InputAction m_Gameplay_Attack1;
+    private readonly InputAction m_Gameplay_Attack2;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
         public GameplayActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
-        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+        public InputAction @Attack1 => m_Wrapper.m_Gameplay_Attack1;
+        public InputAction @Attack2 => m_Wrapper.m_Gameplay_Attack2;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,9 +368,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @Attack1.started += instance.OnAttack1;
+            @Attack1.performed += instance.OnAttack1;
+            @Attack1.canceled += instance.OnAttack1;
+            @Attack2.started += instance.OnAttack2;
+            @Attack2.performed += instance.OnAttack2;
+            @Attack2.canceled += instance.OnAttack2;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -347,9 +384,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @Attack1.started -= instance.OnAttack1;
+            @Attack1.performed -= instance.OnAttack1;
+            @Attack1.canceled -= instance.OnAttack1;
+            @Attack2.started -= instance.OnAttack2;
+            @Attack2.performed -= instance.OnAttack2;
+            @Attack2.canceled -= instance.OnAttack2;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -389,6 +429,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnAttack1(InputAction.CallbackContext context);
+        void OnAttack2(InputAction.CallbackContext context);
     }
 }
