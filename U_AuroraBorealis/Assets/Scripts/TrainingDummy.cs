@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace FabriciohodDev
 {
-    public class TraningDummy : MonoBehaviour
+    public class TrainingDummy : MonoBehaviour
     {
         private Health health;
-        private SpriteRenderer renderer;
+        private SpriteRenderer spriteRenderer;
         private bool isAnimating;
         private WaitForSeconds waitForSeconds;
         private int hitProp = Shader.PropertyToID("_Hit");
@@ -14,7 +14,7 @@ namespace FabriciohodDev
         private void Awake()
         {
             health = GetComponent<Health>();
-            renderer = GetComponentInChildren<SpriteRenderer>();
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             waitForSeconds = new(0.1f);
         }
 
@@ -35,19 +35,19 @@ namespace FabriciohodDev
                 yield return null;
 
             yield return waitForSeconds;
-            renderer.material.SetInt(hitProp, 1);
+            spriteRenderer.material.SetInt(hitProp, 1);
             yield return waitForSeconds;
-            renderer.material.SetInt(hitProp, 0);
+            spriteRenderer.material.SetInt(hitProp, 0);
 
             yield return waitForSeconds;
-            renderer.material.SetInt(hitProp, 1);
+            spriteRenderer.material.SetInt(hitProp, 1);
             yield return waitForSeconds;
-            renderer.material.SetInt(hitProp, 0);
+            spriteRenderer.material.SetInt(hitProp, 0);
 
             yield return waitForSeconds;
-            renderer.material.SetInt(hitProp, 1);
+            spriteRenderer.material.SetInt(hitProp, 1);
             yield return waitForSeconds;
-            renderer.material.SetInt(hitProp, 0);
+            spriteRenderer.material.SetInt(hitProp, 0);
 
             isAnimating = false;
         }

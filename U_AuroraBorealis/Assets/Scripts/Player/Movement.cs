@@ -16,7 +16,6 @@ namespace FabriciohodDev.Player
         [SerializeField] private InputActionReference movementAction;
         [SerializeField] private InputActionReference DashAction;
 
-
         public static Vector2 InputDir { get; private set; }
         public static Vector2 LeastInputDir { get; private set; }
         public static bool isDashing { get; private set; }

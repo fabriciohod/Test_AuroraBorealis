@@ -2,7 +2,7 @@
 
 - [x] Movimentação no estilo top-down
 
-- [ ] Skill de dash
+- [x] Skill de dash
 
 - [x] Ataque, (um slash)
 
@@ -12,7 +12,7 @@
 
 - [ ] VFX Pro dash
 
-- [ ] Dummy de treino
+- [x] Dummy de treino
 
 # Cenário
 
