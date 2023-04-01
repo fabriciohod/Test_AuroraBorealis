@@ -5,6 +5,7 @@ namespace FabriciohodDev
 {
     public class TrainingDummy : MonoBehaviour
     {
+        [SerializeField] private GameObject hitSparks;
         private Health health;
         private SpriteRenderer spriteRenderer;
         private WaitForSeconds waitForSeconds;
@@ -33,10 +34,7 @@ namespace FabriciohodDev
             if (isAnimating)
                 yield return null;
 
-            yield return waitForSeconds;
-            spriteRenderer.material.SetInt(hitProp, 1);
-            yield return waitForSeconds;
-            spriteRenderer.material.SetInt(hitProp, 0);
+            hitSparks.SetActive(true);
 
             yield return waitForSeconds;
             spriteRenderer.material.SetInt(hitProp, 1);
@@ -47,6 +45,13 @@ namespace FabriciohodDev
             spriteRenderer.material.SetInt(hitProp, 1);
             yield return waitForSeconds;
             spriteRenderer.material.SetInt(hitProp, 0);
+
+            yield return waitForSeconds;
+            spriteRenderer.material.SetInt(hitProp, 1);
+            yield return waitForSeconds;
+            spriteRenderer.material.SetInt(hitProp, 0);
+
+            hitSparks.SetActive(false);
 
             isAnimating = false;
         }
